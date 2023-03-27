@@ -29,14 +29,15 @@
 
 #let question_counter = counter("question_counter")
 #let part_counter = counter("part_counter")
-#let display_question_counter = true
+#let display_question_counter = false
 
 #let problem(title, body) = {
   set align(left)
   set text(11pt, weight: "bold")
 
   move(dy: .4em, line(length: 100%))
-  if display_question_counter [#question_counter.display("1.") #title]
+  if display_question_counter [#question_counter.display("1. ")]
+  title
   move(dy: -.4em, line(length: 100%))
 
   set text(12pt, weight: "regular")
