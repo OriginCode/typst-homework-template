@@ -2,7 +2,7 @@
   // Set the document's basic properties.
   set document(author: authors, title: title)
   set page(paper: "us-letter")
-  set text(11pt, font: "Linux Libertine", lang: "en")
+  set text(11pt, font: "New Computer Modern", lang: "en")
 
   // Title row.
   align(center)[
@@ -32,15 +32,13 @@
 #let display_question_counter = false
 
 #let problem(title, body) = {
-  set align(left)
-  set text(11pt, weight: "bold")
-
+  show: text.with(weight: "bold")
   move(dy: .4em, line(length: 100%))
   if display_question_counter [#question_counter.display("1. ")]
   title
   move(dy: -.4em, line(length: 100%))
 
-  set text(12pt, weight: "regular")
+  show: text.with(weight: "regular")
   body
 
   part_counter.update(1)
