@@ -2,7 +2,7 @@
   // Set the document's basic properties.
   set document(author: authors, title: title)
   set page(paper: "us-letter")
-  set text(font: "Linux Libertine", lang: "en")
+  set text(11pt, font: "Linux Libertine", lang: "en")
 
   // Title row.
   align(center)[
@@ -29,25 +29,27 @@
 
 #let question_counter = counter("question_counter")
 #let part_counter = counter("part_counter")
-#let display_question_counter = false
+#let display_question_counter = true
 
 #let problem(title, body) = {
   set align(left)
-  set text(12pt, weight: "bold")
+  set text(11pt, weight: "bold")
 
-  move(dy: 4pt, line(length: 100%))
+  move(dy: .4em, line(length: 100%))
   if display_question_counter [#question_counter.display("1.") #title]
-  move(dy: -4pt, line(length: 100%))
+  move(dy: -.4em, line(length: 100%))
 
   set text(12pt, weight: "regular")
   body
 
   part_counter.update(1)
   question_counter.step()
-  pagebreak()
+  pagebreak(weak: true)
 }
 
-#let part(body) = block[
-  #part_counter.display("(a)") #body
-  #part_counter.step()
-]
+#let part(body) = move(dx: .10in, 
+  block[
+    #part_counter.display("(a)") #body
+    #part_counter.step()
+  ]
+)
