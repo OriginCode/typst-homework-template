@@ -6,4 +6,4 @@ A homework template for [Typst](https://typst.app/), inspired by [Adam Blank's H
 
 Source: [example.typ](./example.typ)
 
-Rendered Result: ![example.pdf](./example.pdf)
+Rendered Result: [example.pdf](./example.pdf)
