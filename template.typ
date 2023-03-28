@@ -62,6 +62,6 @@
 }
 
 #let indented(body) = pad(
-  left: .05in,
+  left: .2in,
   body,
 )
