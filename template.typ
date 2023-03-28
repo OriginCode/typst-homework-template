@@ -51,15 +51,15 @@
 }
 
 #let part(body) = {
-  show: text.with(weight: "bold")
-  part_counter.display("(a)")
-
-  show: text.with(weight: "regular")
-  body
+  block[
+    #show: text.with(weight: "bold")
+    #part_counter.display("(a)")
+    #show: text.with(weight: "regular")
+    #body
+  ]
 
   part_counter.step()
 }
-
 
 #let indented(body) = pad(
   left: .05in,
