@@ -31,9 +31,11 @@
 #let part_counter = counter("part_counter")
 #let display_question_counter = false
 
+
 #let question(title, body) = {
-  show: text.with(weight: "bold")
+  // Title bar
   move(dy: .4em, line(length: 100%))
+  show: text.with(weight: "bold")
   if display_question_counter [#question_counter.display("1. ")]
   title
   move(dy: -.4em, line(length: 100%))
@@ -46,9 +48,18 @@
   pagebreak(weak: true)
 }
 
-#let part(body) = move(dx: .10in, 
-  block[
-    #part_counter.display("(a)") #body
-    #part_counter.step()
-  ]
+#let part(body) = {
+  show: text.with(weight: "bold")
+  part_counter.display("(a)")
+
+  show: text.with(weight: "regular")
+  body
+
+  part_counter.step()
+}
+
+
+#let indented(body) = pad(
+  left: .05in,
+  body,
 )
