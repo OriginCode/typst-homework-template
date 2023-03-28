@@ -31,7 +31,7 @@
 #let part_counter = counter("part_counter")
 #let display_question_counter = false
 
-#let problem(title, body) = {
+#let question(title, body) = {
   show: text.with(weight: "bold")
   move(dy: .4em, line(length: 100%))
   if display_question_counter [#question_counter.display("1. ")]

@@ -7,7 +7,7 @@
 //   ),
 // )
 
-#problem("Hello")[
+#question("Hello")[
   This is a test.
 
   #part[
