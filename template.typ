@@ -3,6 +3,7 @@
   set document(author: authors, title: title)
   set page(paper: "us-letter")
   set text(11pt, font: "New Computer Modern", lang: "en")
+  show raw: text.with(font: "Iosevka")
 
   if show_info {
     // Title row.
@@ -31,37 +32,36 @@
 
 #let question_counter = counter("question_counter")
 #let part_counter = counter("part_counter")
-#let display_question_counter = false
-
+#let disp_question_counter = false
 
 #let question(title, body) = {
+  question_counter.step()
+
   // Title bar
   move(dy: .4em, line(length: 100%))
   show: text.with(weight: "bold")
-  if display_question_counter [#question_counter.display("1. ")]
+  if disp_question_counter [#question_counter.display("1. ")]
   title
   move(dy: -.4em, line(length: 100%))
 
   show: text.with(weight: "regular")
   body
 
-  part_counter.update(1)
-  question_counter.step()
+  part_counter.update(0)
   pagebreak(weak: true)
 }
 
 #let part(body) = {
-  block[
-    #show: text.with(weight: "bold")
-    #part_counter.display("(a)")
-    #show: text.with(weight: "regular")
-    #body
-  ]
-
   part_counter.step()
+  block[#{
+    show: text.with(weight: "bold")
+    part_counter.display("(a)")
+    show: text.with(weight: "regular")
+    body
+  }]
 }
 
 #let indented(body) = pad(
-  left: .2in,
+  left: .05in,
   body,
 )

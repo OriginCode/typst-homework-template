@@ -19,3 +19,14 @@
     This is another part
   ]
 ]
+
+#question("World")[
+  #part[
+    Code Example:
+    ```rs
+    fn main() {
+      println!("Wow it can show my Rust code!")
+    }
+    ```
+  ]
+]
